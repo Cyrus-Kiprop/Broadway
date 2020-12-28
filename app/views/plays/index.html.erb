@@ -1,1 +1,7 @@
-<h4>It's up and running</h4>
+<%  @plays.each do |play| %>
+  <h2 class="">
+    <%= link_to play.title, play_path(play)%>
+  </h2>
+<% end %>
+
+<%= link_to "Add Play", new_play_path %>
