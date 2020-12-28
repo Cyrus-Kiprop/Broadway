@@ -30,6 +30,9 @@ class PlaysController < ApplicationController
   end
 
   def destroy
+    if @play.destroy
+      redirect_to root_path
+    end
   end
 
 
@@ -40,7 +43,7 @@ class PlaysController < ApplicationController
   end
 
   def find_play
-    Play.find(params[:id])
+    @play = Play.find(params[:id])
   end
 
 
