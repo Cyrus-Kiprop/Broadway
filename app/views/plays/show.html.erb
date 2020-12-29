@@ -1,6 +1,11 @@
 <h2 class=""> <%=@play.title %> </h2>
-<h2 class=""> <%=@play.description %> </h2>
-<h2 class=""> <%=@play.director %> </h2>
+<h3 class=""> <%=@play.director %> </h3>
+<% unless @play.category.nil? %>
+  <h4 class="">
+  <%=  @play.category.name %>
+    </h4>
+<%end %>
+<p class=""> <%=@play.description %> </p>
 
 <div class="links btn-groups">
   <% if user_signed_in? %>
