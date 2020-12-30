@@ -8,8 +8,14 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "bootstrap"
-import "../../stylesheets/application.css.scss"
+import "@fortawesome/fontawesome-free/css/all"
+import "../../assets/stylesheets/application";
+
+import "./categoryDropdown.js"
+
+$("openDropdown").load(()=> console.log("hello there I am loaded"))
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+

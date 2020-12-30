@@ -13,9 +13,10 @@
   <body>
 
   <nav class="navbar navbar-default">
-    <div class="container">
       <div class="navbar-header">
-        <%= link_to "Broadway", root_path, class: "navbar-brand"%>
+        <a href="/" class="navbar-brand">
+          <%= render 'header/logo_svg' %>
+        </a>
       </div>
 
       <ul class="nav navbar-nav navbar-right">
@@ -26,6 +27,26 @@
           <li><%= link_to "Log In", new_user_session_path %></li>
         <% end %>
       </ul>
+
+    <div class="dropdown-container">
+      <label for="openDropdown" class="dropdown">
+        sort
+        <i class="fas fa-angle-down"></i>
+      </label>
+
+      <input type="checkbox" id="openDropdown" hidden>
+
+      <div class="dropdown-menu">
+        <% Category.all&.each do |category| %>
+          <span className="<%= "active" if category.name == params[:category] %>">
+            <%=link_to category.name, plays_path({category: category.name})%>
+          </span>
+        <% end %>
+      </div>
+    </div>
+
+
+    <%#= render 'dropdown' %>
 
       <ul class="nav navbar-nav">
         <% if user_signed_in? %>
