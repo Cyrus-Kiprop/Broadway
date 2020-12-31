@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem 'aws-sdk-s3', require: false
 gem 'figaro'
+gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.0'
