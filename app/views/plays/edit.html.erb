@@ -1,6 +1,7 @@
 <h4>Edit BroadWay Play</h4>
 
 <%= simple_form_for @play do |f| %>
+  <%= f.file_field :photo %>
   <%= f.select(:category_id, @categories) %>
   <%= f.input :title %>
   <%= f.input :description %>
