@@ -31,9 +31,16 @@ class PlaysController < ApplicationController
   end
 
   def edit
+    @categories = Category.all.map{ |c| [c.name, c.id]}
   end
 
   def update
+    @play[:category_id] = params[:category_id]
+    if @play.update(play_params)
+      redirect_to plays_path(@play)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
