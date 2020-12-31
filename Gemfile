@@ -8,6 +8,8 @@ gem 'bootstrap-sass', '~> 3.4.1'
 gem 'devise'
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'aws-sdk-s3', require: false
+gem 'figaro'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.0'
