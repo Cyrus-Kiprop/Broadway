@@ -3,7 +3,12 @@ class PlaysController < ApplicationController
   before_action :find_play, only: [:show, :edit, :update, :destroy]
 
   def index
-    @plays = Play.all.order("created_at DESC")
+    @category = Category.find_by(name: params[:category])
+    if params[:category].blank?
+      @plays = Play.all.order("created_at DESC")
+    else
+        @play = Play.where(category_id: @category.id).order("created_at DESC")
+    end
   end
 
   def new

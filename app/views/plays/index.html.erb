@@ -1,7 +1,16 @@
-<%  @plays.each do |play| %>
-  <h2 class="">
-    <%= link_to play.title, play_path(play)%>
-  </h2>
+<h1 class="current-category">
+  <%=params[:category] %>
+</h1>
+
+<% if @plays.nil? || @plays.count ==  0 %>
+
+  <h3><%= "There are no plays tagged #{params[:category]}" %></h3>
+<% else %>
+  <%  @plays.each do |play| %>
+    <h2 class="">
+      <%= link_to play.title, play_path(play)%>
+    </h2>
+  <% end %>
 <% end %>
 
-<%= link_to "Add Play", new_play_path %>
+
