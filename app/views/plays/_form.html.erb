@@ -2,6 +2,7 @@
   <%= select_tag(:category_id, options_for_select(@categories), {
       :prompt =>"Select Category"
   }) %>
+  <%= f.file_field :photo %>
   <%= f.input :title %>
   <%= f.input :description %>
   <%= f.input :director %>

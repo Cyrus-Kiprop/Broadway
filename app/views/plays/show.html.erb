@@ -1,3 +1,5 @@
+<%= image_tag(@play.photo, width: 200) if @play.photo.attached? %>
+
 <h2 class=""> <%=@play.title %> </h2>
 <h3 class=""> <%=@play.director %> </h3>
 <% unless @play.category.nil? %>
@@ -5,6 +7,7 @@
   <%=  @play.category.name %>
     </h4>
 <%end %>
+
 <p class=""> <%=@play.description %> </p>
 
 <div class="links btn-groups">
