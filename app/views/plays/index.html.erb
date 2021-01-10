@@ -7,9 +7,11 @@
   <h3><%= "There are no plays tagged #{params[:category]}" %></h3>
 <% else %>
   <%  @plays.each do |play| %>
-    <h2 class="">
-      <%= link_to play.title, play_path(play)%>
-    </h2>
+    <div class="col-md-3">
+      <a href="/plays/<%= play.id %>">
+        <%= image_tag(play.photo, width: 200, class: 'play') if play.photo.attached? %>
+      </a>
+    </div>
   <% end %>
 <% end %>
 
