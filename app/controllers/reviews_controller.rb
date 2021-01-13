@@ -19,9 +19,7 @@ class ReviewsController < ApplicationController
         end
   end
 
-  def edit
-    @review = @play.reviews.build
-  end
+  def edit; end
 
   def update
     if @review.update(review_params)
@@ -31,11 +29,17 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def destroy
+    @review.destroy
+    redirect_to play_path(@play)
+  end
+
   private
 
   def review_params
     params.require(:review).permit(:rating, :comment)
   end
+
   def find_play
     @play = Play.find(params[:play_id])
   end
