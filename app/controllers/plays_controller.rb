@@ -1,13 +1,13 @@
 class PlaysController < ApplicationController
 
-  before_action :find_play, only: [:show, :edit, :update, :destroy]
+  before_action :find_play, only: %i[show edit update destroy]
 
   def index
     @category = Category.find_by(name: params[:category])
     if params[:category].blank?
-      @plays = Play.all.order("created_at DESC")
+      @plays = Play.all.order('created_at DESC')
     else
-        @play = Play.where(category_id: @category.id).order("created_at DESC")
+        @play = Play.where(category_id: @category.id).order('created_at DESC')
     end
   end
 
@@ -44,9 +44,7 @@ class PlaysController < ApplicationController
   end
 
   def destroy
-    if @play.destroy
-      redirect_to root_path
-    end
+    redirect_to root_path if @play.destroy
   end
 
 

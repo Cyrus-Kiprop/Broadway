@@ -1,20 +1,41 @@
-<%= image_tag(@play.photo, width: 200) if @play.photo.attached? %>
+<div class="row">
 
-<h2 class=""> <%=@play.title %> </h2>
-<h3 class=""> <%=@play.director %> </h3>
-<% unless @play.category.nil? %>
-  <h4 class="">
-  <%=  @play.category.name %>
-    </h4>
-<%end %>
+  <div class="col-md-4">
+    <%= image_tag(@play.photo, width: 200, class: 'play-show') if @play.photo.attached? %>
+  </div>
 
-<p class=""> <%=@play.description %> </p>
+  <div class="col-md-8">
+    <div class="play-info">
+      <h2 class="play-title"> <%=@play.title %> </h2>
+      <h3 class="play-director"><span>From </span> <%=@play.director %> </h3>
+      <% unless @play.category.nil? %>
+        <h4 class="">
+          <%=  @play.category.name %>
+        </h4>
+      <%end %>
+      <p class="play-desc"> <%=@play.description %> </p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="reviews">
+      <h1>Reviews</h1>
+      <%= render @play.reviews %>
+      <div>
+        <%= link_to 'Add Reviews', new_play_review_path(@play), class: 'btn-custom' %>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div class="links btn-groups">
   <% if user_signed_in? %>
     <% if @play.user_id == current_user.id %>
-        <%= link_to  "edit", edit_play_path(@play) %>
-        <%= link_to  "delete", play_path(@play), method: :delete, data: { confirm: "Are you sure?"}%>
+        <%= link_to  "edit", edit_play_path(@play), class: "btn btn-custom" %>
+        <%= link_to  "delete", play_path(@play), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-custom"%>
     <%end %>
   <%end %>
   <%= link_to  "back", root_path%>
